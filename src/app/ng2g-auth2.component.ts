@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {GauthService, Profile} from "./gauth.service";
-import {Observable} from "rxjs/Rx";
 
 @Component({
     moduleId: module.id,
@@ -16,7 +15,6 @@ export class Ng2gAuth2AppComponent implements OnInit {
     title = 'Sign2G';
 
     currentProfile:Profile;
-    currentProfile$:Observable<Profile>;
 
     private grantedScopes:string[];
 
@@ -28,8 +26,7 @@ export class Ng2gAuth2AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.currentProfile$ = this.service.currentProfile$;
-        this.currentProfile$.subscribe(this.onProfile.bind(this));
+        this.service.currentProfile$.subscribe(this.onProfile.bind(this));
     }
 
     onProfile(p:Profile) {
@@ -57,5 +54,5 @@ export class Ng2gAuth2AppComponent implements OnInit {
     logout() {
         this.service.logout();
     }
-    
+
 }

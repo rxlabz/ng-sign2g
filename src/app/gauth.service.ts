@@ -12,7 +12,7 @@ import BasicProfile = gapi.auth2.BasicProfile;
 @Injectable()
 export class GauthService {
 
-    CLIENT_ID = '239214892766-ut7q6g37f2m1cj4j88e1b2k702bbb5sh.apps.googleusercontent.com';
+    private CLIENT_ID = '239214892766-ut7q6g37f2m1cj4j88e1b2k702bbb5sh.apps.googleusercontent.com';
 
     private currentUser:GoogleUser;
 
