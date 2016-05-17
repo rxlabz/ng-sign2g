@@ -1,11 +1,14 @@
-# Angular 2 Google Sign-In service
+# Google Sign-In service in Angular 2 App
 
-- generated with Angular CLI
+## Gauth.service
 
-# Gauth.service
-
-The Gauth service exposes an Observable<Profile> which allows to get the authentication status.
-
+For now, the Gauth service exposes :
+- **currentProfile$** : an Observable<Profile> which allows to get the authentication status.
+- get **isSignedIn()**:boolean
+- **signIn()**
+- **grant(scope:string, offline:boolean = false)**
+- revoke()
+- logout()
 **Usage**
 
 ```html
@@ -24,3 +27,6 @@ onProfile(p:Profile) {
         this.grantedScopes = p ? p.scope.split(' ') : [];
     }
 ```
+
+In this example, the service is injected in Ng2gAuthApp component.
+
