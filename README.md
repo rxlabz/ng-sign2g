@@ -61,7 +61,7 @@ constructor(public service:GauthService) {}
 
 ngOnInit(){
     this.currentProfile$ = this.service.currentProfile$;
-    this.currentProfile$.subscribe(this.onProfile.bind(this));
+    this.currentProfile$.subscribe((value)=>this.profile = value);
 }
 
 onProfile(p:Profile){
