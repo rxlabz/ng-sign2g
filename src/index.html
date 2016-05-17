@@ -19,6 +19,14 @@
     }
   </script>
   -->
+  <script src="https://apis.google.com/js/platform.js"></script>
+  <style type="text/css">
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+
+  </style>
 </head>
 <body>
   <ng2g-auth2-app>Loading...</ng2g-auth2-app>
@@ -27,11 +35,12 @@
   <script src="vendor/reflect-metadata/Reflect.js"></script>
   <script src="vendor/systemjs/dist/system.src.js"></script>
   <script src="vendor/zone.js/dist/zone.js"></script>
-
   <script>
     System.import('system-config.js').then(function () {
       System.import('main');
     }).catch(console.error.bind(console));
   </script>
+
+
 </body>
 </html>

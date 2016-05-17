@@ -7,6 +7,9 @@ const map: any = {
 
 /** User packages configuration. */
 const packages: any = {
+  'gapi.auth2': {
+    format: 'cjs'
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,10 +48,12 @@ System.config({
   map: {
     '@angular': 'vendor/@angular',
     'rxjs': 'vendor/rxjs',
-    'main': 'main.js'
+    'main': 'main.js',
+    'gapi.auth2': 'https://apis.google.com/js/platform.js'
   },
   packages: cliSystemConfigPackages
 });
+
 
 // Apply the user's configuration.
 System.config({ map, packages });

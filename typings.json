@@ -4,6 +4,9 @@
     "jasmine": "registry:dt/jasmine#2.2.0+20160412134438",
     "selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654"
   },
+  "globalDependencies": {
+    "gapi.auth2": "registry:dt/gapi.auth2"
+  },
   "ambientDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654"
   }

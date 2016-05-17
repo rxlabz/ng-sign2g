@@ -1,3 +1,38 @@
 <h1>
-  {{title}}
+    {{title}}
 </h1>
+
+<div>
+
+    <a href="#" *ngIf="!isSignedIn" (click)="signIn()"> Login </a>
+
+    <a href="#" *ngIf="isSignedIn" (click)="grant(SCOPES.join(' '))"> Authorize </a>
+    <a href="#" *ngIf="isSignedIn" (click)="grant(SCOPES.join(' '), true)"> Authorize offline </a>
+
+    <a href="#" *ngIf="isSignedIn" (click)="revoke()"> Revoke </a>
+
+    <a href="#" *ngIf="isSignedIn" (click)="logout()"> Logout </a>
+</div>
+
+<div class="box" *ngIf="isSignedIn">
+
+    <div>{{currentProfile.getName()}}</div>
+    <div>{{currentProfile.getGivenName()}}</div>
+    <div>{{currentProfile.getFamilyName()}}</div>
+    <div>{{currentProfile.getEmail()}}</div>
+
+    <img src="{{currentProfile.getImageUrl()}}"
+         alt="avatar">
+
+    <!--<div>{{grantedScopes}}</div>-->
+
+    <ul>
+        <li *ngFor="let g of grantedScopes">{{g}}</li>
+    </ul>
+    <!--
+    <div *ngIf="currentProfile">
+    <div>{{(currentProfile$ | async)?.getEmail()}}</div>
+
+    <img src="{{(currentProfile$ | async)?.getImageUrl()}}"
+         alt="avatar">-->
+</div>

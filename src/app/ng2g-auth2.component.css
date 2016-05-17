@@ -1,0 +1,11 @@
+a {
+    background: #eee;
+    padding: 6px;
+    margin: 6px;
+}
+
+.box {
+    margin: 10px;
+    padding: 10px 6px;
+    background: #def;
+}
