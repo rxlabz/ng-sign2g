@@ -1,12 +1,13 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, provide} from "@angular/core";
 import {GauthService, Profile} from "./gauth.service";
+import {APP_CONFIG, CONFIG} from "./config";
 
 @Component({
     moduleId: module.id,
     selector: 'ng2g-auth2-app',
     templateUrl: 'ng2g-auth2.component.html',
     styleUrls: ['ng2g-auth2.component.css'],
-    providers: [GauthService]
+    providers: [provide(APP_CONFIG, {useValue: CONFIG}), GauthService]
 })
 export class Ng2gAuth2AppComponent implements OnInit {
 

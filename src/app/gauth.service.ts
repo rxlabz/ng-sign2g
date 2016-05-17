@@ -1,8 +1,10 @@
 /// <reference path="../../typings/globals/gapi.auth2/index.d.ts" />
 
-import {Injectable, NgZone} from "@angular/core";
+import {Injectable, NgZone, Inject} from "@angular/core";
 import {Http} from "@angular/http";
 import {Observable, Observer} from "rxjs/Rx";
+import {Config, APP_CONFIG} from "./config";
+
 import GoogleUser = gapi.auth2.GoogleUser;
 import GoogleAuth = gapi.auth2.GoogleAuth;
 import BasicProfile = gapi.auth2.BasicProfile;
@@ -12,22 +14,22 @@ import BasicProfile = gapi.auth2.BasicProfile;
 @Injectable()
 export class GauthService {
 
-    private CLIENT_ID = '239214892766-ut7q6g37f2m1cj4j88e1b2k702bbb5sh.apps.googleusercontent.com';
-
     private currentUser:GoogleUser;
 
     private currentProfile:Profile;
     currentProfile$:Observable<Profile>;
-    profileOb$r:Observer<Profile>;
+    private profileOb$r:Observer<Profile>;
 
-    auth:GoogleAuth;
+    private auth:GoogleAuth;
+    private CLIENT_ID;
 
     get isSignedIn():boolean {
         return this.auth ? this.auth.isSignedIn.get() : false;
     }
 
-    constructor(private http:Http, private ngZone:NgZone) {
-        console.log('GauthService');
+    constructor(@Inject(APP_CONFIG) private cfg:Config, private http:Http, private ngZone:NgZone) {
+        this.CLIENT_ID = cfg.client_id;
+        console.log('GauthService', this.CLIENT_ID);
         this.currentProfile$ = new Observable<Profile>(obs => this.profileOb$r = obs).share();
         this.loadApi(this.CLIENT_ID);
     }

@@ -3,14 +3,10 @@
 </h1>
 
 <div>
-
     <a href="#" *ngIf="!isSignedIn" (click)="signIn()"> Login </a>
-
     <a href="#" *ngIf="isSignedIn" (click)="grant(SCOPES.join(' '))"> Authorize </a>
     <a href="#" *ngIf="isSignedIn" (click)="grant(SCOPES.join(' '), true)"> Authorize offline </a>
-
     <a href="#" *ngIf="isSignedIn" (click)="revoke()"> Revoke </a>
-
     <a href="#" *ngIf="isSignedIn" (click)="logout()"> Logout </a>
 </div>
 
@@ -24,15 +20,7 @@
     <img src="{{currentProfile.getImageUrl()}}"
          alt="avatar">
 
-    <!--<div>{{grantedScopes}}</div>-->
-
     <ul>
-        <li *ngFor="let g of grantedScopes">{{g}}</li>
+        <li *ngFor="let scope of grantedScopes">{{scope}}</li>
     </ul>
-    <!--
-    <div *ngIf="currentProfile">
-    <div>{{(currentProfile$ | async)?.getEmail()}}</div>
-
-    <img src="{{(currentProfile$ | async)?.getImageUrl()}}"
-         alt="avatar">-->
 </div>
