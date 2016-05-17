@@ -1,13 +1,15 @@
 # Google Sign-In service in Angular 2 App
 
+<a target="_blank" href="https://developers.google.com/identity/sign-in/web/sign-in">Google Sign-In intro</a>
+
 ## Gauth.service
 
-For now, the Gauth service exposes :
+The Gauth service exposes :
 - **currentProfile$** : an Observable<Profile> which allows to get the authentication status.
 - get **isSignedIn()**:boolean
 - **signIn()**
-- **grant(scope:string, offline:boolean = false)**
-- revoke()
+- **grant(scope:string, offline:boolean = false)** : request additionnal permissions
+- revoke() : cancel all app permissions
 - logout()
 
 ### Usage
@@ -23,8 +25,7 @@ For now, the Gauth service exposes :
 - Injected CLIENT_ID
 
 ```typescript
-import {OpaqueToken} from "@angular/core";
-
+// app/config.ts
 export interface Config {
     client_id:string;
 }
@@ -37,9 +38,12 @@ export let CONFIG:Config = {
 export let APP_CONFIG = new OpaqueToken('app.config');
 ```
 
-
+In this example, the service is injected in Ng2gAuthApp component.
 
 ```typescript
+// ng2-auth2.components.ts
+constructor(public service:GauthService) {}
+
 ngOnInit(){
     this.currentProfile$ = this.service.currentProfile$;
     this.currentProfile$.subscribe(this.onProfile.bind(this));
@@ -49,14 +53,4 @@ onProfile(p:Profile){
         this.currentProfile = p;
         this.grantedScopes = p ? p.scope.split(' ') : [];
     }
-```
-
-In this example, the service is injected in Ng2gAuthApp component.
-
-```typescript
-constructor(public service:GauthService) {}
-
-ngOnInit() {
-    this.service.currentProfile$.subscribe((value) => this.profile = value);
-}
 ```
