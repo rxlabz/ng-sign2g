@@ -1,7 +1,6 @@
 /// <reference path="../../typings/globals/gapi.auth2/index.d.ts" />
 
 import {Injectable, NgZone, Inject} from "@angular/core";
-import {Http} from "@angular/http";
 import {Observable, Observer} from "rxjs/Rx";
 import {Config, APP_CONFIG} from "./config";
 
@@ -27,7 +26,7 @@ export class GauthService {
         return this.auth ? this.auth.isSignedIn.get() : false;
     }
 
-    constructor(@Inject(APP_CONFIG) private cfg:Config, private http:Http, private ngZone:NgZone) {
+    constructor(@Inject(APP_CONFIG) private cfg:Config, private ngZone:NgZone) {
         this.CLIENT_ID = cfg.client_id;
         this.currentProfile$ = new Observable<Profile>(obs => this.profileOb$r = obs).share();
         this.loadApi(this.CLIENT_ID);
