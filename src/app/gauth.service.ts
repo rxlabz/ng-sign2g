@@ -29,7 +29,6 @@ export class GauthService {
 
     constructor(@Inject(APP_CONFIG) private cfg:Config, private http:Http, private ngZone:NgZone) {
         this.CLIENT_ID = cfg.client_id;
-        console.log('GauthService', this.CLIENT_ID);
         this.currentProfile$ = new Observable<Profile>(obs => this.profileOb$r = obs).share();
         this.loadApi(this.CLIENT_ID);
     }
