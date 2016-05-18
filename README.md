@@ -5,7 +5,7 @@
 ## Gauth.service
 
 The Gauth service exposes :
-- **currentProfile$** : an Observable<Profile> which allows to get the authentication status.
+- **currentProfile$** : an Observable<Profile> which allows to get the user profile.
 - get **isSignedIn()**:boolean
 - **signIn()**
 - **grant(scope:string, offline:boolean = false)** : request additionnal permissions
